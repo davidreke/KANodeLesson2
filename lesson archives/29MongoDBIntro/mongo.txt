@@ -1,0 +1,4 @@
+1. no SQL = not relational, table rows and columsn
+2. no SQL uses collections and documents
+3. Each collection can only hold one type of documents.
+4. Each record looks like a lot like JSON

@@ -1,0 +1,19 @@
+1. We're going to use the cloud Service, MongoDB Atlas
+
+2. Create a new cluster / free / aws/ default region / name it Node Ninja
+... This could take a few minutes
+
+3. select collections and Add my Own Data
+
+database name: NodeNinja collection name: blogs
+
+4. Setup data base access
+    a) Add new user
+    b) create a username and password davidexample Looping!
+    c) read and write to any database
+
+5.Go back to clusters and select connect
+    a) connect with application
+        1. add your ip address if necessary
+        2. then selection connec twith application
+    b) copy and pasted the connection string to app.js

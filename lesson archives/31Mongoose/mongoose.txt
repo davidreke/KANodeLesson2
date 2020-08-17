@@ -1,0 +1,20 @@
+Mongoose is and ODM library : Object Document Mapping Library
+User.get()
+User.findByID()
+Blog.deleteOne()
+
+The mongodDB library is clunky and verbose
+
+We will make schemas and models
+Schemas are first
+schemas describe what data types it will have
+
+Blog schema:
+title: string , required
+snippet: string , required
+body: string , required
+uniaue id: number
+
+then we make a model based off of the schema
+
+1. npm install mongoose
