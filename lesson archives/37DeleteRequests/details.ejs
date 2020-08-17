@@ -27,7 +27,7 @@
             })
             // 5. add json to the .then method
             .then((response) => response.json())
-            .then((data) => console.log(data))
+            .then((data) => window.location.href = data.redirect)
             .catch(err => console.log(err))
         })
         // 4. is adding a delete request on app.js
