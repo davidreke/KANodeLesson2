@@ -1,0 +1,5 @@
+mvc = model view control
+Its a way of structuring code and files
+
+We've seen models and views, but now lets add the controller
+It not necessary, but it does make our code easier.

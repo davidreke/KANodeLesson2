@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-// 2. require blog from blog.js
 const Blog = require('./models/blog');
 
 
