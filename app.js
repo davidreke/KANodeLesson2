@@ -1,10 +1,19 @@
-
+// 0. Our app.js is getting pretty big and unwieldly so we are going to use express router to help with this.
+// 1. create a routes folder and put blogRoutes.js in it.
+// 2. move the following to blogRoutes.js
+// app.get('/blogs'
+// app.post('/blogs'
+// app.get('/blogs/:id'
+// app.delete('/blogs/:id'
 
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const Blog = require('./models/blog');
+
 const { render } = require('ejs');
+// 7 import the router
+const blogRoutes = require('./routes/blogRoutes')
+// 8 move the const blog to blogRoutes.js
 
 
 app.set('view engine', 'ejs');
@@ -21,112 +30,21 @@ const morgan = require('morgan')
 
 app.set('view engine', 'ejs');
 
-// 1? Creat style.css
-// 1.5 add a link to the header
 
-
-// 2. Middleware and static files
-// express.static allows us to access static files from a folder
 app.use(express.static('public'));
 app.use(morgan('dev'));
-// 3 create a public folder and move style.css to it
-// load localhost and load localhost300/style.css
-// 4. remove style from the header and add it to style.css
-
-
-
-
-
 
 app.get('/', (req, res) =>{
-<<<<<<< HEAD
   res.redirect('/blogs')
-=======
-
-  const blogs = [
-    {
-      title: "Yoshi finds eggs",
-      snippet:
-        "Lorem ipsum dolor sit amet consectetur",
-    },
-    {
-      title: "Mario finds stars",
-      snippet:
-        "Lorem ipsum dolor sit amet consectetur",
-    },
-    {
-      title: "How to defeat bowser",
-      snippet:
-        "Lorem ipsum dolor sit amet consectetur",
-    },
-  ];
-                          
-  res.render("index", { title: "Home", blogs:blogs });
->>>>>>> 5daf0e4127fd1d24f10821109803ca8d5378c92f
 })
-
 
 app.get("/about", (req, res) => {
   res.render('about', {title: "About"})
 });
 
-
-app.get('/blogs', (req, res) => {
-
-  Blog.find().sort({createdAt: -1})
-    .then((result)=>{
-      res.render('index', {title: 'All Blogs', blogs: result})
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
-})
-
-
-app.post('/blogs', (req, res)=> {
-  console.log(req.body) 
-  const blog = new Blog(
-    req.body
-  )
-  blog.save()
-    .then((result)=>{
-      res.redirect('/blogs')
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
-})
-
-app.get('/blogs/:id', (req, res) => {
-  const id = req.params.id;
-  console.log(id)
-
-  Blog.findById(id)
-    .then(result => {
-      res.render('details', {blog: result,  title: 'Blog Details'})
-    })
-    .catch(err => {
-      console.log(err)
-    })
-})
-
-// 4. add a delete request
-app.delete('/blogs/:id', (req, res) => {
-  const id = req.params.id;
-
-  Blog.findByIdAndDelete(id)
-  .then(result => {
-    // we are going to send json with a redicrt property
-    res.json({redirect: '/blogs'})
-  })
-  .catch(err => {console.log(err)})
-})
-// 5 is on details.ejs
-
-app.get('/blogs/create' , (req, res) => {
-    res.render('create', {title: "Create a new Blog"});
-})
-
+// 9. add the following to take the place of the blog routes
+// 11. add scoping to blogRoutes in app.use
+app.use('/blogs', blogRoutes)
 
 app.use((req, res) => {
     res.status(404).render('404',  {title: "404"})

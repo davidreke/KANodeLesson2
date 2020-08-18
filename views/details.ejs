@@ -21,13 +21,12 @@
 
         trashcan.addEventListener('click', (e)=>{
             const endpoint = `/blogs/${trashcan.dataset.doc}`;
-
             fetch(endpoint, {
-                method: 'DELETE'
+                method: 'DELETE',
             })
-            // 5. add json to the .then method
-            .then((response) => response.json())
-            .then((data) => console.log(data))
+            .then(response => response.json())
+            .then(data => window.location.href = data.redirect)
+            .then(()=>{console.log('redirected')})
             .catch(err => console.log(err))
         })
         // 4. is adding a delete request on app.js
